@@ -18,7 +18,7 @@ splits = [0.7, 0.8, 0.9]
 best_r2 = -np.inf
 best_config = {}
 
-print("\n--- Model Eğitim ve Optimizasyon Başladı ---")
+print("\n Model Eğitim ve Optimizasyon Başladı ")
 
 for d in degrees:
     for s in splits:
@@ -45,7 +45,7 @@ for d in degrees:
             best_config = {'degree': d, 'split': s, 'theta': theta, 'mean': mean, 'std': std}
 
 # 3. Sonuçları Yazdır
-print("\n========== EN İYİ MODEL SONUCU ==========")
+print("\n EN İYİ MODEL SONUCU")
 print(f"En İyi Derece: {best_config['degree']}")
 print(f"En İyi R2 Skoru: {best_r2:.4f}")
 
@@ -57,13 +57,7 @@ last_row_final = np.insert(last_row_scaled, 0, 1)
 
 predicted_price = np.dot(last_row_final, best_config['theta'])
 
-print("\n==============================")
 print(f"Son Kapanış Fiyatı: {df[kapanis_col].iloc[-1]:.2f} TL")
 print(f"YARIN İÇİN TAHMİN EDİLEN FİYAT: {predicted_price:.2f} TL")
-print("==============================")
 
-# Görselleştirme (Opsiyonel)
-plt.plot(df['Tarih'], y, label="Gerçek")
-plt.title("Altın Tahmin Grafiği")
-plt.legend()
-plt.show()
+
